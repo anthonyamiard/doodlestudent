@@ -1,4 +1,5 @@
-version: "3.8"
+#version: "3.8"
+version: "3.3"
 services:
   db:
     image: mysql
@@ -10,7 +11,7 @@ services:
       - MYSQL_USER=tlc
       - MYSQL_PASSWORD=tlc
   etherpad:
-    image: etherpad/etherpad:stable
+    image: etherpad/etherpad:1.8.16
     ports:
       - "9001:9001"
     volumes:
