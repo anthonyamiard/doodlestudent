@@ -21,6 +21,11 @@ services:
     ports:
       - "2525:25"
   api:
-    build: .
+    image: quarkus/code-with-quarkus-fast-jar
+    depends_on:
+      - "db"
+    build:
+      context: .
+      dockerfile: src/main/docker/Dockerfile.fast-jar
     ports:
       - "8080:8080"
