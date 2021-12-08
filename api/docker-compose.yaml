@@ -30,4 +30,4 @@ services:
       dockerfile: src/main/docker/Dockerfile.fast-jar
     ports:
       - "8080:8080"
-    restart: on-error
+    restart: "on-failure"
