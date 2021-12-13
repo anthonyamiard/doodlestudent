@@ -26,8 +26,8 @@ services:
     depends_on:
       - "db"
     build:
-      context: .
-      dockerfile: src/main/docker/Dockerfile.fast-jar
+      context: api
+      dockerfile: api/src/main/docker/Dockerfile.fast-jar
     ports:
       - "8080:8080"
     restart: "on-failure"
@@ -36,7 +36,7 @@ services:
     depends_on:
       - "api"
     build:
-      context: ../front
-      dockerfile: ../front/Dockerfile
+      context: front
+      dockerfile: front/Dockerfile
     ports:
       - "90:80"
