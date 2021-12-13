@@ -31,3 +31,12 @@ services:
     ports:
       - "8080:8080"
     restart: "on-failure"
+  front:
+    image: aamiard/tlcfront
+    depends_on:
+      - "api"
+    build:
+      context: ../front
+      dockerfile: ../front/Dockerfile
+    ports:
+      - "90:80"
