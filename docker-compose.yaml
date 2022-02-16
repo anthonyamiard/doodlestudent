@@ -39,3 +39,21 @@ services:
       context: front
     ports:
       - "90:80"
+  proxy:
+    image: bunkerity/bunkerized-nginx
+    restart: always
+    ports:
+      - "80:8080"
+      - "443:8443"
+    volumes:
+      - ./server-confs:/server-confs:ro
+    environment:
+      - SERVER_NAME=doodle.aamiard.diverse-team.fr pad.aamiard.diverse-team.fr phpmyadmin.aamiard.diverse-team.fr
+      - SERVE_FILES=no
+      - DISABLE_DEFAULT_SERVER=no
+      - PROXY_REAL_IP=yes
+      - AUTO_LETS_ENCRYPT=yes
+      - REDIRECT_HTTP_TO_HTTPS=yes
+      - USE_LIMIT_REQ=no
+      - HTTP2=no
+      - FEATURE_POLICY=accelerometer 'none'; ambient-light-sensor 'none'; autoplay 'none'; camera 'none'; display-capture 'none'; document-domain 'none'; encrypted-media 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; payment 'none'; picture-in-picture 'none'; speaker 'none'; sync-xhr 'self'; usb 'none'; vibrate 'none'; vr 'none'
