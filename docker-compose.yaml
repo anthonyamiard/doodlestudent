@@ -3,8 +3,8 @@ version: "3.3"
 services:
   db:
     image: mysql
-    ports:
-      - "3306:3306"
+    expose:
+      - 3306
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=tlc
@@ -14,8 +14,8 @@ services:
     image: aamiard/etherpad
     build: 
       context: pad
-    ports:
-      - "9001:9001"
+    expose:
+      - 9001
   mail:
     image: bytemark/smtp
     restart: always
@@ -27,8 +27,8 @@ services:
       - "db"
     build:
       context: api
-    ports:
-      - "8080:8080"
+    expose:
+      - 8080
     environment:
       - DB_PASSWORD=${DB_PASSWORD}
     restart: "on-failure"
@@ -36,8 +36,8 @@ services:
     image: aamiard/doodle-front
     build:
       context: front
-    ports:
-      - "90:80"
+    expose:
+      - 80
   proxy:
     image: bunkerity/bunkerized-nginx
     restart: always
